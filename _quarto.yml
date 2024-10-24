@@ -45,12 +45,9 @@ format:
   html:
     toc: true
     toc-location: left
-    theme: 
-      light: cosmo 
+    theme:
+      light: lux
       dark: superhero
     css: styles.css
 
-
-
-editor: visual
 
