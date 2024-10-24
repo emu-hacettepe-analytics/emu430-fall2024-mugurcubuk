@@ -3,7 +3,7 @@ project:
   output-dir: docs
 
 website:
-  title: "[Student/Group Full Name]'s Analytics Lab"
+  title: "[Muhammed Uğur Çubuk]'s Analytics Lab"
   navbar:
     search: true
     left:
@@ -22,9 +22,9 @@ website:
             
     tools:
       - icon: github
-        href: https://twitter.com
+        href: https://github.com/mugurcubuk
       - icon: twitter
-        href: https://twitter.com
+        href: https://x.com/on2nci
       - icon: linkedin
         href: https://www.linkedin.com/in/muhammed-u%C4%9Fur-%C3%A7ubuk-53a55b254/
 
@@ -49,6 +49,7 @@ format:
       light: pulse 
       dark: superhero
     css: styles.css
+
 
 
 editor: visual
