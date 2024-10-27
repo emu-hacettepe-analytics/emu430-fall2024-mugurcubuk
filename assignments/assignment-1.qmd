@@ -4,12 +4,40 @@ title: "Assignment 1"
 
 # Assignment 1
 
+**A)**
+
+I watched the video where Mustafa Gökçe Baydoğan was a guest.
+
+In this video, Mr. Baydoğan explained data analytics and applications in the field of industrial engineering to this industrial engineering students. He explained this with real-life problems he solved himself. While explaining the problems one by one, he talked about problem data and then talked about what type of industrial enginerring and data science tools used. He first talked about the problem of drying timber. He talked about how he worked in harmony with forest experts on the timber drying problem. He then talked what he did while anticipating mishaps during timber drying. The second problem was about electricty markets. He mentioned how wrong forecasts cause great losses in elctricity markets, which is why accurate forecasting methods are very important. He also talked about the trendyol algorithm. Finally, he answered the questions asked by the students.
+
+**Questions:**
+
+**1)** What is the difference between approach to the problem between an industrial engineer who knows data science and a computer engineer?
+
+**-Answer:** While Computer engineers look at the problem more focusedon data and technical aspects, industrial engineers are nore inclined to get to the root of events and model the problem.
+
+**2) Which option is not one of the shortcomings of deep learning?**
+
+a\. need more parameters
+
+b\. robust
+
+c\. ability to decide
+
+d\. data hunger
+
+e\. lacking interpretability
+
+**B)**
+
+**Step 1: Import the " polls_us_election_2016" data set from the dslabs package**
+
 ```{r}
-1 + 1
+install.packages("dslabs")
+library(dslabs)
+data(polls_us_election_2016)
 ```
 
-My first assignment has two parts.
-
-## (a)
-
-## (b)
+```{r}
+head(polls_us_election_2016, 10)
+```
