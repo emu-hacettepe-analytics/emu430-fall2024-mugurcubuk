@@ -29,18 +29,3 @@ d\. data hunger
 e\. lacking interpretability
 
 # **b)**
-
-**Step 1: Import the " polls_us_election_2016" data set from the dslabs package**
-
-```{r}
-install.packages("dslabs")
-```
-
-```{r}
-library(dslabs)
-data(polls_us_election_2016)
-```
-
-```{r}
-head(polls_us_election_2016, 10)
-```
