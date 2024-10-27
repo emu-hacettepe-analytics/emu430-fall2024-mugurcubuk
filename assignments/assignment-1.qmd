@@ -4,7 +4,7 @@ title: "Assignment 1"
 
 # Assignment 1
 
-**A)**
+# **a)**
 
 I watched the video where Mustafa Gökçe Baydoğan was a guest.
 
@@ -28,12 +28,15 @@ d\. data hunger
 
 e\. lacking interpretability
 
-**B)**
+# **b)**
 
 **Step 1: Import the " polls_us_election_2016" data set from the dslabs package**
 
 ```{r}
 install.packages("dslabs")
+```
+
+```{r}
 library(dslabs)
 data(polls_us_election_2016)
 ```
