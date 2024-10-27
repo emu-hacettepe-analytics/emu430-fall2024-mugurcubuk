@@ -14,7 +14,7 @@ In this video, Mr. Baydoğan explained data analytics and applications in the fi
 
 **1)** What is the difference between approach to the problem between an industrial engineer who knows data science and a computer engineer?
 
-**-Answer:** While Computer engineers look at the problem more focusedon data and technical aspects, industrial engineers are nore inclined to get to the root of events and model the problem.
+**-Answer:** While computer engineers look at the problem more focused on data and technical aspects, industrial engineers are more inclined to get to the root of events and model the problem.
 
 **2) Which option is not one of the shortcomings of deep learning?**
 
