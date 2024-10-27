@@ -5,26 +5,24 @@ sidebar: false
 
 # Education
 
--   B.S., Industrial Engineering, Hacettepe University, Turkey, 20xx - ongoing.
+-   B.S., Industrial Engineering, Hacettepe University, Turkey, 2021 - ongoing.
 
 # Work Experience
 
 ## Employements
 
-1.  Firm xxx, position xx, year xxx
+1.  Lagoon Amusument Park, Ride Operator, 2024
 
-2.  Firm yyy, position yyy, year yyy
+2.  Sonic Drive-In, Carhop, 2024
 
-## Internships
-
-1.  Firm aaa, position xx, year xxx
-
-2.  Firm bbb, position yyy, year yyy
-
-# Projects
+3.  Kahveland, Barista, 2022
 
 # Competencies
 
-R, Quarto, Git, Python
+R, Quarto, Git, Python, AutoCAD
 
 # Hobbies
+I like watching movies and series, to read novels, to play football and watching football match.
+
+
+[Download my resume](files/CV_for_mypage.pdf)

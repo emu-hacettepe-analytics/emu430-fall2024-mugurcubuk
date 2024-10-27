@@ -46,7 +46,7 @@ format:
     toc: true
     toc-location: left
     theme:
-      light: lux
+      light: cosmo
       dark: superhero
     css: styles.css
 
