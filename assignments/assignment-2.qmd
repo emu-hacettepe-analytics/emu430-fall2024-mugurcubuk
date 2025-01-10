@@ -1,9 +1,137 @@
 ---
 title: "Assignment 2"
+
+format:
+  html: 
+    code-fold: true
+    code-summary: "Show the code"
 ---
 
 # Assignment 2
 
 ```{r}
-1 + 1
+library(tidyverse)
+library(rvest)
+library(stringr)
+library(ggplot2)
+library(knitr)
+```
+
+```{r}
+url1 <- "https://m.imdb.com/search/title/?title_type=feature&release_date=2010-01-01,&num_votes=2500,&country_of_origin=TR"
+url2 <- "https://m.imdb.com/search/title/?title_type=feature&release_date=2010-01-01,2024-12-31&num_votes=2499,&country_of_origin=TR"
+```
+
+```{r}
+page1 <- read_html(url1)
+page2 <- read_html(url2)
+```
+
+```{r}
+# Verileri Çekme
+titles1 <- page1 |> html_nodes(".dli-title") |> html_text()
+titles2 <- page2 |> html_nodes(".dli-title") |> html_text()
+```
+
+```{r}
+# Verileri Çekme
+titles1 <- page1 |> html_nodes(".dli-title") |> html_text()
+titles2 <- page2 |> html_nodes(".dli-title") |> html_text()
+
+years1 <- page1 |> html_nodes(".dli-title-metadata-item:nth-child(1)") |> html_text()
+years2 <- page2 |> html_nodes(".dli-title-metadata-item:nth-child(1)") |> html_text()
+
+durations1 <- page1 |> html_nodes(".dli-title-metadata-item:nth-child(2)") |> html_text()
+durations2 <- page2 |> html_nodes(".dli-title-metadata-item:nth-child(2)") |> html_text()
+
+ratings1 <- page1 |> html_nodes(".ratingGroup--imdb-rating") |> html_text()
+ratings2 <- page2 |> html_nodes(".ratingGroup--imdb-rating") |> html_text()
+
+votes1 <- page1 |> html_nodes(".ipc-rating-star--voteCount") |> html_text()
+votes2 <- page2 |> html_nodes(".ipc-rating-star--voteCount") |> html_text()
+```
+
+```{r}
+# Verileri Birleştirme
+combined_titles <- c(titles1, titles2)
+combined_years <- c(years1, years2)
+combined_durations <- c(durations1, durations2)
+combined_ratings <- c(ratings1, ratings2)
+combined_votes <- c(votes1, votes2)
+```
+
+```{r}
+# Film Adlarını Temizleme
+combined_title_names <- combined_titles |> str_trim() |> str_remove_all("\\s+$")
+```
+
+```{r}
+hours1 <- as.integer(str_extract(durations1, "\\d+(?=h)"))
+minutes1 <- as.integer(str_extract(durations1, "\\d+(?=m)"))
+total_duration_minutes1 <- (hours1 * 60) + minutes1
+
+hours2 <- as.integer(str_extract(durations2, "\\d+(?=h)"))
+minutes2 <- as.integer(str_extract(durations2, "\\d+(?=m)"))
+total_duration_minutes2 <- (hours2 * 60) + minutes2
+
+combined_durations <- c(total_duration_minutes1, total_duration_minutes2)
+```
+
+```{r}
+# Oy Sayılarını İşleme
+votes1 <- str_replace_all(votes1, "[()]", "")
+votes2 <- str_replace_all(votes2, "[()]", "")
+votes1 <- str_remove_all(votes1, "[^0-9.K]") |> str_remove_all("K") |> as.numeric() * 1000
+votes2 <- str_remove_all(votes2, "[^0-9.K]") |> str_remove_all("K") |> as.numeric() * 1000
+
+combined_votes <- c(votes1, votes2)
+```
+
+```{r}
+# Dereceleri Düzenleme
+rating_no_parant1 <- str_replace_all(combined_ratings, "\\(.*\\)", "")
+combined_ratings <- as.double(str_trim(str_extract(rating_no_parant1, "^\\d+\\.?\\d*")))
+
+```
+
+```{r}
+# Veri Çerçevesi Oluşturma
+imdb_movies_data <- data.frame(
+  Title = combined_title_names,
+  Year = combined_years,
+  Duration = combined_durations,
+  Rate = combined_ratings,
+  Vote = combined_votes
+)
+
+kable(head(imdb_movies_data))
+```
+
+```{r}
+# Favori Filmleri Arama Fonksiyonu
+search_film <- function(name_of_the_film) {
+  result <- imdb_movies_data[imdb_movies_data$Title == name_of_the_film, ]
+  return(result)
+}
+
+kable(search_film("Mucize"))
+kable(search_film("Ayla"))
+kable(search_film("Ahlat Ağacı"))
+
+```
+
+```{r}
+# Veriyi Görselleştirme
+updated_imdb_movies_data <- imdb_movies_data |> 
+  group_by(Year) |> 
+  mutate(Mean_Rate = mean(Rate, na.rm = TRUE), Total_Film_Numbers = n())
+
+ggplot(updated_imdb_movies_data, aes(x = Year, y = Mean_Rate)) +
+  geom_point() +
+  geom_boxplot() +
+  labs(
+    title = "Yıllara Göre Ortalama Film Puanı",
+    x = "Yıl",
+    y = "Ortalama Puan"
+  )
 ```
